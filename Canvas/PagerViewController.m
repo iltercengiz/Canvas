@@ -7,11 +7,12 @@
 //
 
 #import "PagerViewController.h"
+#import "PagerLayout.h"
 
 #define NAVIGATION_BAR_HEIGHT 64.0
 #define CELL_MARGIN 10.0
 
-#define CELL_WIDTH_IPAD 320.0
+#define CELL_WIDTH_IPAD 280.0
 #define CELL_WIDTH_IPHONE 280.0
 
 @interface PagerViewController ()
@@ -24,6 +25,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self.collectionView setCollectionViewLayout:[PagerLayout new]];
+    }
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
